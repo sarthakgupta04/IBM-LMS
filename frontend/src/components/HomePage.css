@@ -1,0 +1,20 @@
+/* src/components/HomePage.css */
+.homepage {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.links {
+  margin-top: 20px;
+}
+
+.links a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #007BFF;
+  font-size: 18px;
+}
+
+.links a:hover {
+  text-decoration: underline;
+}
