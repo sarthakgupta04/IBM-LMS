@@ -10,9 +10,9 @@ An API which facilitates the working of a minimal loan management system
 - Admin is the highest authority who can approve or reject a loan and also the request by agent<br/>
 - Customers and agents can Sign up<br/>
 - Admin, cutomers and agents can login(agent can login only if agent is approved by the admin)<br/>
-- When an agent will signup a request will be sent to the admin for approvalxxxxxx<br/>
+- When an agent will signup a request will be sent to the admin for approval<br/>
 - A loan has entities such as principle, interest rate, months to repay, emi and status<br/>
-- The value of interest rate would depend on the value of principlexxxxxxxxx<br/>
+- The value of interest rate would depend on the value of principle<br/>
 - The loan can have 3 kinds of status: Approved, New or Rejected
 
 **Tech stack used**<br/>
@@ -102,4 +102,3 @@ An API which facilitates the working of a minimal loan management system
 >Loan Request<br>
 ![alt text](https://github.com/muneeb21/loan-management-system/blob/master/screenshots/ss5.png?raw=true)<br/>
 
-![alt text](https://github.com/muneeb21/loan-management-system/blob/master/screenshots/ss6.png?raw=true)
