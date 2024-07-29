@@ -4,43 +4,41 @@ const passport = require("passport");
 
 const loanController = require("../controllers/api/v1/loanController");
 
-//routes for loan releted quesrries
-
+// All loan-related routes are protected
 router.post(
-	"/newLoan",
-	passport.authenticate("jwt", { session: false }),
-	loanController.newLoanRequest
+    "/newLoan",
+    passport.authenticate("jwt", { session: false }),
+    loanController.newLoanRequest
 );
 
 router.post(
-	"/approveLoan",
-	passport.authenticate("jwt", { session: false }),
-	loanController.approveLoan
+    "/approveLoan",
+    passport.authenticate("jwt", { session: false }),
+    loanController.approveLoan
 );
 
 router.post(
-	"/rejectLoan",
-	passport.authenticate("jwt", { session: false }),
-	loanController.rejectLoan
+    "/rejectLoan",
+    passport.authenticate("jwt", { session: false }),
+    loanController.rejectLoan
 );
 
 router.post(
-	"/editLoan",
-	passport.authenticate("jwt", { session: false }),
-	loanController.editLoan
+    "/editLoan",
+    passport.authenticate("jwt", { session: false }),
+    loanController.editLoan
 );
-
 
 router.get(
-	"/allLoans",
-	passport.authenticate("jwt", { session: false }),
-	loanController.allLoans
+    "/allLoans",
+    passport.authenticate("jwt", { session: false }),
+    loanController.allLoans
 );
 
 router.post(
-	"/loansbyFilter",
-	passport.authenticate("jwt", { session: false }),
-	loanController.LoansbyFilter
+    "/loansbyFilter",
+    passport.authenticate("jwt", { session: false }),
+    loanController.LoansbyFilter
 );
 
 module.exports = router;

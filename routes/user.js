@@ -1,42 +1,37 @@
-  
 const express = require("express");
 const router = express.Router();
-const passport=require("passport");
-
-const loanRoutes = require("./loan");
+const passport = require("passport");
 const userController = require("../controllers/api/v1/userController");
 
-router.use("/loan", loanRoutes);
-
-
-
+// Unauthenticated routes
 router.post("/signup", userController.userSignup);
 router.post("/login", userController.login);
 
-
+// Authenticated routes
+router.use("/loan", passport.authenticate("jwt", { session: false }), require("./loan"));
 
 router.get(
-	"/listUsers",
-	passport.authenticate("jwt", { session: false }),
-	userController.listUsers
+  "/listUsers",
+  passport.authenticate("jwt", { session: false }),
+  userController.listUsers
 );
 
 router.get(
-	"/agentRequestList",
-	passport.authenticate("jwt", { session: false }),
-	userController.agentRequestList
+  "/agentRequestList",
+  passport.authenticate("jwt", { session: false }),
+  userController.agentRequestList
 );
 
 router.post(
-	"/approveAgent",
-	passport.authenticate("jwt", { session: false }),
-	userController.approveAgent
+  "/approveAgent",
+  passport.authenticate("jwt", { session: false }),
+  userController.approveAgent
 );
 
 router.post(
-	"/updatePassword",
-	passport.authenticate("jwt", { session: false }),
-	userController.updatePassword
+  "/updatePassword",
+  passport.authenticate("jwt", { session: false }),
+  userController.updatePassword
 );
 
 module.exports = router;

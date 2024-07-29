@@ -7,10 +7,14 @@ import RegisterForm from './components/RegisterForm';
 import Dashboard from './components/Dashboard';
 import LoanRequestForm from './components/LoanRequestForm';
 import LoanList from './components/LoanList';
+import AdminLoanApproval from './components/AdminLoanApproval';
+import Navbar from './components/Navbar';
+import AboutUs from './components/AboutUs';
 
 const App = () => {
   return (
     <Router>
+      <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginForm />} />
@@ -18,6 +22,8 @@ const App = () => {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/loan/request" element={<LoanRequestForm />} />
         <Route path="/loan/list" element={<LoanList />} />
+        <Route path="/admin/approve" element={<AdminLoanApproval />} />
+        <Route path="/about" element={<AboutUs />} />
       </Routes>
     </Router>
   );

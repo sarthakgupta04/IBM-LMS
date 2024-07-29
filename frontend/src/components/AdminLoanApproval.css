@@ -1,0 +1,47 @@
+.admin-loan-approval-container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.loan-approval-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.loan-approval-table th,
+.loan-approval-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.loan-approval-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.approve-button,
+.reject-button {
+  margin-right: 10px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.approve-button {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.reject-button {
+  background-color: #f44336;
+  color: white;
+}
+
+.error-message {
+  color: red;
+  margin-bottom: 20px;
+}

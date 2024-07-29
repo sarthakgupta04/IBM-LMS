@@ -1,12 +1,35 @@
-/* src/components/LoanList.css */
-ul {
-  list-style: none;
-  padding: 0;
+.loan-list-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-li {
-  padding: 10px;
-  margin-bottom: 10px;
+.loan-list-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.loan-list-table th, .loan-list-table td {
+  padding: 12px;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  text-align: left;
+}
+
+.loan-list-table th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.loan-list-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+  text-align: center;
 }

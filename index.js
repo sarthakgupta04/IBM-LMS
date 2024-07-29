@@ -1,5 +1,6 @@
 const express=require('express'); 
 const app = express();
+const cors = require('cors');
 const port = 8000;
 const db = require('./config/mongoose');
 const bcrypt=require('bcryptjs');
@@ -7,6 +8,7 @@ const bcrypt=require('bcryptjs');
 const passportJwt = require('./config/passport-jwt-strategy');
 
 // middleware parser to get the form values as the body object in request 
+app.use(cors());
 app.use(express.urlencoded());
 
 
