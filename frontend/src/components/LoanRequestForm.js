@@ -8,12 +8,14 @@ const LoanRequestForm = () => {
   const [repaymentAmount, setRepaymentAmount] = useState(null);
   const [error, setError] = useState('');
 
-  const calculateRepayment = (principle, months) => {
+  const calculateRepayment = (principle, monthsToRepay) => {
     const principleAmount = parseFloat(principle);
-    const monthsToRepay = parseInt(months, 10);
-    const interestRate = principleAmount >= 50000 ? 0.03 : 0.02;
-    const totalInterest = principleAmount * interestRate * monthsToRepay;
-    return principleAmount + totalInterest;
+    const months = parseInt(monthsToRepay, 10);
+    const interestRate = principleAmount >= 100000 ? 0.04 : principleAmount >= 50000 ? 0.03 : 0.02;
+    const applicationFee = 500;
+    const interestPerMonth = (principleAmount / 100) * (interestRate * 100); // Adjust interest rate to percentage
+    const totalInterest = interestPerMonth * months;
+    return principleAmount + totalInterest + applicationFee;
   };
 
   const handleCalculate = () => {
@@ -50,7 +52,11 @@ const LoanRequestForm = () => {
       alert('Loan request submitted successfully!');
     } catch (err) {
       console.error('Loan request error:', err);
-      setError('Error submitting loan request.');
+      if (err.response && err.response.data && err.response.data.message) {
+        setError(err.response.data.message);
+      } else {
+        setError('Error submitting loan request.');
+      }
     }
   };
 

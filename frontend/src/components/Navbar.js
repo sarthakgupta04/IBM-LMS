@@ -1,3 +1,4 @@
+// src/components/Navbar.js
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import AuthContext from '../AuthContext';
@@ -25,6 +26,7 @@ const Navbar = () => {
                         ) : isAgent ? (
                             <>
                                 <Link to="/agent/dashboard">Agent Dashboard</Link>
+                                <Link to="/loan/request">Request Loan</Link>
                                 <Link to="/loan/list">List Loans</Link>
                             </>
                         ) : (
