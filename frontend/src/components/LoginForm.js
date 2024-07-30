@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import AuthContext from '../AuthContext';
 import './LoginForm.css';
 
 const LoginForm = () => {
@@ -9,6 +10,7 @@ const LoginForm = () => {
     password: ''
   });
   const [error, setError] = useState('');
+  const { login } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -21,23 +23,29 @@ const LoginForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       const response = await axios.post('http://localhost:8000/user/login', formData);
-      console.log('Login successful', response.data);
+      const { token } = response.data.data;
+      localStorage.setItem('token', token);
 
-      if (response.data.message === 'Your approval request is still pending') {
-        setError(response.data.message);
+      // Fetch user profile data using the token
+      const userResponse = await axios.get('http://localhost:8000/user/profile', {
+        headers: { 'Authorization': `Bearer ${token}` }
+      });
+      const user = userResponse.data.user;
+
+      localStorage.setItem('user', JSON.stringify(user));
+      login(user);
+
+      // Redirect based on user type
+      if (user.userType === 'admin') {
+        navigate('/admin/dashboard');
+      } else if (user.userType === 'agent') {
+        navigate('/agent/dashboard');
       } else {
-        // Save the token to localStorage
-        localStorage.setItem('token', response.data.data.token);
-        console.log('Token stored:', response.data.data.token); // Log token storage
-
-        // Redirect to the dashboard
         navigate('/dashboard');
       }
     } catch (error) {
-      console.error('Login error', error);
       setError('Login failed. Please try again.');
     }
   };

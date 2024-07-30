@@ -1,0 +1,50 @@
+.agent-approval-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #f4f4f9;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.agent-approval-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.agent-approval-table th,
+.agent-approval-table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.agent-approval-table th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.agent-approval-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.approve-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.approve-button:hover {
+  background-color: #0056b3;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+}

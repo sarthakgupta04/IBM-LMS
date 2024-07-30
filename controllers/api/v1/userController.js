@@ -83,7 +83,20 @@ module.exports.userSignup = async function(req, res)  {
 		});
 	}
 }
-
+// Add this method to the userController
+module.exports.profile = async function(req, res) {
+    try {
+      const user = await User.findById(req.user._id).select('-password');
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+      return res.status(200).json({ user });
+    } catch (err) {
+      console.error('Error fetching profile', err);
+      return res.status(500).json({ message: 'Internal Server Error' });
+    }
+  };
+  
 // Function for login for a user
 
 module.exports.login = async function(req, res){
