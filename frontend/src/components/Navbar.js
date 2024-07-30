@@ -6,6 +6,7 @@ import './Navbar.css';
 const Navbar = () => {
     const { isAuthenticated, user, logout } = useContext(AuthContext);
     const isAdmin = user && user.userType === 'admin';
+    const isAgent = user && user.userType === 'agent';
 
     return (
         <nav className="navbar">
@@ -20,6 +21,11 @@ const Navbar = () => {
                                 <Link to="/admin/dashboard">Admin Dashboard</Link>
                                 <Link to="/admin/approve">Approve Loans</Link>
                                 <Link to="/admin/agent-approval">Agent Approval</Link>
+                            </>
+                        ) : isAgent ? (
+                            <>
+                                <Link to="/agent/dashboard">Agent Dashboard</Link>
+                                <Link to="/loan/list">List Loans</Link>
                             </>
                         ) : (
                             <>

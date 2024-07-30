@@ -1,0 +1,31 @@
+.agent-dashboard-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.agent-dashboard-welcome {
+  margin-bottom: 20px;
+}
+
+.agent-actions {
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.agent-actions button {
+  margin-right: 10px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.agent-actions button:hover {
+  background-color: #0056b3;
+}

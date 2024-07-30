@@ -12,11 +12,13 @@ import AboutUs from './components/AboutUs';
 import AuthContext from './AuthContext';
 import AdminDashboard from './components/AdminDashboard';
 import AgentApprovalList from './components/AgentApprovalList';
+import AgentDashboard from './components/AgentDashboard';
 
 const App = () => {
   const { isAuthenticated, user } = useContext(AuthContext);
 
   const isAdmin = user && user.userType === 'admin';
+  const isAgent = user && user.userType === 'agent';
 
   return (
     <Router>
@@ -28,10 +30,21 @@ const App = () => {
         <Route path="/dashboard" element={isAuthenticated ? <Dashboard /> : <Navigate to="/login" />} />
         <Route path="/loan/request" element={isAuthenticated ? <LoanRequestForm /> : <Navigate to="/login" />} />
         <Route path="/loan/list" element={isAuthenticated ? <LoanList /> : <Navigate to="/login" />} />
-        <Route path="/admin/dashboard" element={isAdmin ? <AdminDashboard /> : <Navigate to="/login" />} />
         <Route path="/admin/approve" element={isAdmin ? <AdminLoanApproval /> : <Navigate to="/login" />} />
         <Route path="/admin/agent-approval" element={isAdmin ? <AgentApprovalList /> : <Navigate to="/login" />} />
+        <Route path="/admin/dashboard" element={isAdmin ? <AdminDashboard /> : <Navigate to="/login" />} />
+        <Route path="/agent/dashboard" element={isAgent ? <AgentDashboard /> : <Navigate to="/login" />} />
         <Route path="/about" element={<AboutUs />} />
+        {isAuthenticated && (
+          <Route
+            path="*"
+            element={
+              isAdmin ? <Navigate to="/admin/dashboard" />
+              : isAgent ? <Navigate to="/agent/dashboard" />
+              : <Navigate to="/dashboard" />
+            }
+          />
+        )}
       </Routes>
     </Router>
   );
